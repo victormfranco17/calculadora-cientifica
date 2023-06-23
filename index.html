@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora Científica</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			margin: 0 auto;
+			max-width: 400px;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			border-radius: 5px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 0;
+			color: #333;
+		}
+
+		input[type="text"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border: none;
+			border-radius: 3px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+		}
+
+		input[type="button"] {
+			width: 49%;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+			background-color: #4CAF50;
+			color: #fff;
+			cursor: pointer;
+			transition: background-color 0.2s ease;
+		}
+
+		input[type="button"]:hover {
+			background-color: #3e8e41;
+		}
+
+		.clear {
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Calculadora Científica</h1>
+		<input type="text" id="display" readonly>
+		<input type="button" value="C" onclick="clearDisplay()">
+		<input type="button" value="&larr;" onclick="deleteChar()">
+		<input type="button" value="%" onclick="percent()">
+		<input type="button" value="/" onclick="append('/')">
+		<input type="button" value="7" onclick="append('7')">
+		<input type="button" value="8" onclick="append('8')">
+		<input type="button" value="9" onclick="append('9')">
+		<input type="button" value="*" onclick="append('*')">
+		<input type="button" value="4" onclick="append('4')">
+		<input type="button" value="5" onclick="append('5')">
+		<input type="button" value="6" onclick="append('6')">
+		<input type="button" value="-" onclick="append('-')">
+		<input type="button" value="1" onclick="append('1')">
+		<input type="button" value="2" onclick="append('2')">
+		<input type="button" value="3" onclick="append('3')">
+		<input type="button" value="+" onclick="append('+')">
+		<input type="button" value="0" onclick="append('0')">
+		<input type="button" value="." onclick="append('.')">
+		<input type="button" value="=" onclick="calculate()">
+		<input type="button" value="sin" onclick="sinus()">
+		<input type="button" value="cos" onclick="cosinus()">
+		<input type="button" value="tan" onclick="tangente()">
+		<div class="clear"></div>
+	</div>
+
+	<script>
+		function append(value) {
+			document.getElementById('display').value += value;
+		}
+
+		function clearDisplay() {
+			document.getElementById('display').value = '';
+		}
+
+		function deleteChar() {
+			let display = document.getElementById('display');
+			display.value = display.value.substring(0, display.value.length - 1);
+		}
+
+		function calculate() {
+			let display = document.getElementById('display');
+			let result = eval(display.value);
+			display.value = result;
+		}
+
+		function sinus() {
+			let display = document.getElementById('display');
+			let result = Math.sin(eval(display.value));
+			display.value = result;
+		}
+
+		function cosinus() {
+			let display = document.getElementById('display');
+			let result = Math.cos(eval(display.value));
+			display.value = result;
+		}
+
+		function tangente() {
+			let display = document.getElementById('display');
+			let result = Math.tan(eval(display.value));
+			display.value = result;
+		}
+
+		function percent() {
+			let display = document.getElementById('display');
+			let result = eval(display.value) / 100;
+			display.value = result;
+		}
+	</script>
+</body>
+</html>
